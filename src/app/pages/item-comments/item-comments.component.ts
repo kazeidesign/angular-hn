@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { HackernewsApiService } from '../../services/hackernews-api.service';
 
 @Component({
   selector: 'app-item-comments',
@@ -6,10 +9,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./item-comments.component.scss']
 })
 export class ItemCommentsComponent implements OnInit {
+  sub: any;
+  item;
 
-  constructor() { }
+  constructor(
+    private _hackernewsApiService: HackernewsApiService,
+    private route: ActivatedRoute
+  ) {}
 
-  ngOnInit() {
+  ngOnInit() {    
+    this.sub = this.route.params.subscribe(params => {
+      let itemID = +params['id'];
+      this._hackernewsApiService.fetchComments(itemID).subscribe(data => {
+        this.item = data;
+      }, error => console.log('Could not load item' + itemID));
+    });
   }
-
 }

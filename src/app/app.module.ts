@@ -11,6 +11,8 @@ import { StoriesComponent } from './pages/stories/stories.component';
 import { FooterComponent } from './pages/footer/footer.component';
 import { ItemComponent } from './pages/item/item.component';
 import { ItemCommentsComponent } from './pages/item-comments/item-comments.component';
+import { CommentTreeComponent } from './pages/comment-tree/comment-tree.component';
+import { CommentComponent } from './pages/comment/comment.component';  
 
 import { HackernewsApiService } from './services/hackernews-api.service';
 import { DomainePipe } from './pipes/domaine.pipe';
@@ -23,7 +25,9 @@ import { DomainePipe } from './pipes/domaine.pipe';
     FooterComponent,
     ItemComponent,
     DomainePipe,
-    ItemCommentsComponent
+    ItemCommentsComponent,
+    CommentTreeComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
